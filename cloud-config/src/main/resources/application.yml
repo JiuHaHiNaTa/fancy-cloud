@@ -1,0 +1,45 @@
+# 应用名称
+server:
+  port: 8888
+  servlet:
+    context-path: /
+
+spring:
+  profiles:
+    active: git
+  application:
+    name: cloud-config
+  resources:
+    static-locations: classpath:/,classpath:/templates/
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  cloud:
+    config:
+      label: master
+      server:
+        git:
+          uri: http://192.168.12.134/jiuha/fancy-cloud-config.git
+          search-paths: '{application}'
+          username: funny
+          password: 19970407
+        accept-empty: false
+        default-label: master
+
+# Actuator Web 访问端口
+management:
+  server:
+    port: 8081
+  endpoints:
+    jmx:
+      exposure:
+        # properties文件为* yml文件需要添加双引号
+        include: "*"
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+
