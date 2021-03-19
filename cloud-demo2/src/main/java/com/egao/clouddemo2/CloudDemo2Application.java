@@ -1,17 +1,18 @@
-package com.egao.clouddemo;
+package com.egao.clouddemo2;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableEurekaClient
-@RefreshScope
-public class CloudDemoApplication {
+@EnableFeignClients
+public class CloudDemo2Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(CloudDemoApplication.class, args);
+        SpringApplication.run(CloudDemo2Application.class, args);
     }
 
 }

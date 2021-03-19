@@ -3,9 +3,9 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.egao</groupId>
-    <artifactId>cloud-eruka</artifactId>
+    <artifactId>cloud-eureka</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>cloud-eruka</name>
+    <name>cloud-eureka</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -17,6 +17,10 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
@@ -71,7 +75,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.3.7.RELEASE</version>
                 <configuration>
-                    <mainClass>com.egao.clouderuka.CloudErukaApplication</mainClass>
+                    <mainClass>com.egao.cloudeureka.CloudEurekaApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>
