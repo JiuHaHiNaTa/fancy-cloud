@@ -1,0 +1,26 @@
+# 应用名称
+spring:
+  application:
+    name: cloud-service-user
+  profiles:
+    active: dev
+    include: dev-jdbc
+  cloud:
+    config:
+      label: master
+      uri: http://localhost:8888
+      enabled: true
+      name: cloud-service-user
+
+# 应用服务 WEB 访问端口
+server:
+  port: 8090
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
