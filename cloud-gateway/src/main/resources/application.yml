@@ -1,0 +1,52 @@
+#服务-IP 映射列表配置
+server-url:
+  - user-service: http://localhost:8090
+  - user-service-api: http://localhost:9000
+
+
+spring:
+  cloud:
+    gateway:
+      #跨域配置
+      globalcors:
+        add-to-simple-url-handler-mapping: false
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: '*'
+            aloowedMethod:
+              - GET
+              - POST
+      #根据服务发现自动配置路由
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      #全局超时配置
+      httpclient:
+        connect-timeout: 1000
+        response-timeout: 5s
+#      #自定义配置路由
+#      routes:
+#      - id: login_route
+#        uri: http://127.0.0.1:8100/login
+#        predicates:
+#          - Path=/login
+#          - Method=GET,POST
+#        filters:
+#          - AddRequestHeader=Authorization,bearer b965995e-6fef-4530-bd27-7e0e77f43216
+#        metadata:
+#          #单个路由超时设置
+#          connect-timeout: 200
+#          response-timeout: 200
+
+management:
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: gateway
+
+
+

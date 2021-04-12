@@ -1,7 +1,0 @@
-# 应用名称
-spring:
-  application:
-    name: cloud_service_api_user
-
-server:
-  port: 8100

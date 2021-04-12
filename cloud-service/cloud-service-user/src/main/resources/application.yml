@@ -1,0 +1,14 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://127.0.0.1:8901/user
+
+info:
+  app.name: cloud-service-user
+  company.name: egao

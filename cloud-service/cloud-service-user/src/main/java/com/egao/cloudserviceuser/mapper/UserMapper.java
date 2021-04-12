@@ -19,10 +19,9 @@ public interface UserMapper extends JpaRepository<User, String> {
      * 根据用户名和删除标志位查询用户
      *
      * @param username   用户名
-     * @param deleteFlag 删除标志位
      * @return 用户信息实体类
      */
-    Optional<User> findByUsernameAndDeleteFlag(String username, Integer deleteFlag);
+    Optional<User> findByUsername(String username);
 
     /**
      * 新增用户

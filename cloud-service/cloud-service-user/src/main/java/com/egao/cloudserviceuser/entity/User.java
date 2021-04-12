@@ -33,4 +33,10 @@ public class User extends BaseEntity {
      * 昵称
      */
     private String nickname;
+
+    /**
+     * 用户状态
+     */
+    private Integer status;
+
 }

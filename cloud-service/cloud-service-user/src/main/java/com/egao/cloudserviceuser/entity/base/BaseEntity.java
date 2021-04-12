@@ -26,11 +26,4 @@ public abstract class BaseEntity {
     @CreationTimestamp
     private LocalDateTime createTime;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @UpdateTimestamp
-    private LocalDateTime updateTime;
-
-
-    @Column(insertable = false, columnDefinition = "int default 0")
-    private Integer deleteFlag;
 }

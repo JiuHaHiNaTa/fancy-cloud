@@ -18,11 +18,20 @@
     </properties>
 
     <modules>
+        <module>cloud-common</module>
         <module>cloud-config</module>
         <module>cloud-eureka</module>
+        <module>cloud-gateway</module>
+        <module>cloud-authentication</module>
         <module>cloud-service</module>
-        <module>cloud-service-api</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+    </dependencies>
 
     <dependencyManagement>
         <dependencies>

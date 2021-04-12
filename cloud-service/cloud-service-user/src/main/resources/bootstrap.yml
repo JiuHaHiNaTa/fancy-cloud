@@ -9,7 +9,7 @@ spring:
     config:
       label: master
       uri: http://localhost:8888
-      enabled: true
+      enabled:   true
       name: cloud-service-user
 
 # 应用服务 WEB 访问端口
