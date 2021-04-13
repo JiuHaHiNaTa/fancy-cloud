@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * 用户类
@@ -16,7 +17,9 @@ import javax.persistence.Table;
 @Data
 @Entity
 @Table(name = "t_user")
-public class User extends BaseEntity {
+public class User extends BaseEntity implements Serializable {
+
+    private static final long serialVersionUID = -4233913230406781061L;
 
     /**
      * 用户名

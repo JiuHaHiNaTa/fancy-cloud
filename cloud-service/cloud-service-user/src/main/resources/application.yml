@@ -6,8 +6,17 @@ management:
 
 security:
   oauth2:
+    sso:
+      login-path: /login
+    client:
+      client-id: fancycloud
+      client-secret: 123456
+      access-token-uri: http://127.0.0.1:8901/login/oauth/access_token
+      user-authorization-uri: http://127.0.0.1:8901/login/oauth/authorize
+      client-authentication-scheme: form
     resource:
       user-info-uri: http://127.0.0.1:8901/user
+      token-info-uri: http://127.0.0.1:8901/oauth2/check_token
 
 info:
   app.name: cloud-service-user

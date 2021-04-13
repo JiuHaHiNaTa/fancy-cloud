@@ -33,16 +33,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        //配置用户认证
-        auth.userDetailsService(userDetailsService())
-                .passwordEncoder(password);
+        super.configure(auth);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/login").permitAll()
-                .antMatchers("/error").permitAll()
-                .anyRequest().authenticated();
+                .antMatchers("/resources/**")
+                .permitAll()
+                .antMatchers("/login")
+                .permitAll()
+                .antMatchers("/error")
+                .permitAll()
+                .anyRequest()
+                .authenticated();
     }
 }
