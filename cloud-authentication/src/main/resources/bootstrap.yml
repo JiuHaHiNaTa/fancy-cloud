@@ -12,6 +12,9 @@ spring:
       uri: http://localhost:8888
       enabled: true
       name: cloud-authentication
+    loadbalancer:
+      ribbon:
+        enabled: false
 
 #注册中心设置
 eureka:

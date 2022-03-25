@@ -7,9 +7,9 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
 @SpringBootApplication
-@EnableResourceServer
 @EnableEurekaClient
 @EnableAuthorizationServer
+@EnableResourceServer
 public class CloudAuthenticationApplication {
 
     public static void main(String[] args) {

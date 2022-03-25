@@ -15,11 +15,7 @@ class CloudServiceUserApplicationTests {
 
     @Test
     void contextLoads() {
-        User user = new User();
-        user.setUsername("test");
-        user.setPassword("1997");
-        user.setNickname("测试");
-        mapper.save(user);
+
     }
 
 }

@@ -5,7 +5,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -15,18 +15,18 @@ import java.util.stream.Collectors;
  */
 public class AuthenticationUserDetails implements UserDetails {
 
-    private User user;
+    private final transient User user;
 
-    private List<Permission> permissionList;
+    private final transient Set<Permission> permissionSet;
 
-    public AuthenticationUserDetails(User user, List<Permission> permissionList) {
+    public AuthenticationUserDetails(User user, Set<Permission> permissionSet) {
         this.user = user;
-        this.permissionList = permissionList;
+        this.permissionSet = permissionSet;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return permissionList.stream()
+        return permissionSet.stream()
                 .filter(permission -> permission.getValue() != null)
                 .map(permission -> new SimpleGrantedAuthority(permission.getValue()))
                 .collect(Collectors.toList());
@@ -44,17 +44,17 @@ public class AuthenticationUserDetails implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override

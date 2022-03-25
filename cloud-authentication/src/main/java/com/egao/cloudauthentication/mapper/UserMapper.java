@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 /**
- * user数据库DAO
+ * 用户DAO
  *
  * @author Jiuha
  */

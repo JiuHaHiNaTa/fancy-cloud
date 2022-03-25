@@ -13,6 +13,8 @@ spring:
   cloud:
     config:
       label: master
+      discovery:
+        enabled: true
       server:
         git:
           uri: http://192.168.12.134/jiuha/fancy-cloud-config.git
@@ -21,21 +23,26 @@ spring:
           password: 19970407
         accept-empty: false
         default-label: master
+      profile: dev
+    #Spring Bus配置自动刷新配置
+    bus:
+      refresh:
+        enabled: true
+      id: ${spring.application.name}:${spring.cloud.config.profile}:${random.value}
+    #Spring stream配置
+    stream:
+      kafka:
+        binder:
+          brokers:
+            - 192.168.12.140:9092
+  kafka:
+    bootstrap-servers:
+      - 192.168.12.140:9092
+    consumer:
+      group-id: config-client
 
-# Actuator Web 访问端口
-management:
-  server:
-    port: 8887
-  endpoints:
-    jmx:
-      exposure:
-        # properties文件为* yml文件需要添加双引号
-        include: "*"
-    web:
-      exposure:
-        include: "*"
-  endpoint:
-    health:
-      show-details: always
+logging:
+  level:
+    org.springframework.cloud.bus: debug
 
 

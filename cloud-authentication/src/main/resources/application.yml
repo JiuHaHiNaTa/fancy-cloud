@@ -1,8 +1,62 @@
 spring:
   datasource:
-    url: jdbc:mysql://192.168.12.140:3306/fancy-cloud-test?serverTimezone=UTC
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: 123456
+    druid:
+      url: jdbc:mysql://192.168.12.140:3306/fancy-cloud-test?serverTimezone=UTC
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: 123456
 
+  redis:
+    host: 192.168.12.140
+    port: 6379
+    password: 123456
+    database: 0
+    jedis:
+      pool:
+        max-wait: 60000
+        min-idle: 2
+        max-active: 8
+        max-idle: 8
+    timeout: 60000
+    client-name: auth-redis-service
+
+jwt:
+  privateKey: |
+    -----BEGIN RSA PRIVATE KEY-----
+    MIIEpgIBAAKCAQEA7vTAGI8rqv/Qos2pgx0hRfZ+kv8h60KSUOtCbGQ3iTIYgLDx
+    LWlPJNtd9vlbTkP/FgKomeYOM3AQk/SnCjXMDUOmoKT9RflrFq8bSf04VhQ0ns/f
+    fuwFFr95FZuaE7rmXWtblakyJzFaOXtGwI/Z64xQxwLrZIi8crjL3qNLYy64UX7L
+    yauwys9aDcaFpH6fCKIBeT4MuVioOHrK1nFvT8detlcBS6NsnmXl0XrUWmkFJ3uW
+    kRmqZlRuMYZgw27qMqZ8Og6qdMVLJoKKyLIO32ZZF3mI7ECt6Kxg+x3YpcMLXCkQ
+    1oNSJWTs8IN7D2cnV44DEnpFHIVpawaL7F5YXwIDAQABAoIBAQCRsC1yi8/O+Rsm
+    N4fzRY5kzo2LZ/wxKKx2o4ki9tMZVa60v6y7yCoVyZ13l76AcFqU+9f5xNbBq8Cf
+    xJkXU4duSuHLrewxfok5Elfr+3Qen0EZ1ploE9RicykK8Iy3HMuZB3yWOcs3NBLT
+    WwLfIpV11F3niDMmX2ut8ldyDVNISyVBRiSjpRkNt3bxpuJgyFCEbMhhjbx2Lvw2
+    LD/BQgaA1XLCwkj5AIY7QqhVaWB0+bVe4w1Zwd6gj6R8QRPp5MmKtNQW5uqbaZMs
+    ucMn8WMK5gpx3hgw+LhwUiw/unjQlkvZCh6gT5Y0VDN1K0NMTrz2ZbPrZtXckPtz
+    0DDjk+ghAoGBAPlNVQZoo5XcHdufLN6eyee6f3ajRpQaAs7zp3XST720DTmDvFhf
+    Q62yBPPb1prMs0BJjOOwyCE/hqWFqyLrKRzdZ3SGxwU6bQwztK+RJQITc0AmU9fk
+    IyVch36z8/F+6hg8/Q4JKXdzlO90ah98Dfd825rBaeS5c7ObnTYuA0sPAoGBAPVg
+    Qna10NDRlwXVnh4quhVFMgXJyVQkYL6Jzjak7Tq0K3KCHQJ7voCNvkbh5BOipY0L
+    2rHlr6GY9cTafRDPnMrBF0oaX4BcTnPQ8A6aJKFw6D3xPWjRulU6XnppAA/+ynej
+    wZnhVSyHwUtM6gOk0DZc4W6YQKGqCGnnF/aE/V2xAoGBAMcjjK1n3HQStg7+4Rqb
+    AHEIOlUMK46WEHQ7kSK+ck/4iS/OGR8GSctvjiE1FAHnTbAmkFI4nkRguC9zzLZB
+    3j9eZAtitYtplj3O95/ecw9rdf5iH0suwxxPAzSkjlHzrQ7beNBDZUozm16DQVoR
+    AB8XL1w471tzAAcSYMwsiRjlAoGBAOLpAm1+0zzYJR27Hr5s6qoS1CBwKyMJhQGO
+    tEjqGYso4+i/lA4g2tlMusIX0O+rgAbACJxseA8rQVOqbO9n3mnNSDk5zEkKk24c
+    sHIAb5FvtQTbGtvc3sBD+uyePvWLvDYJFFa1/yrv23tEBEAcYIN1Pu8kEtitQZyV
+    nR5We2rxAoGBAKoB677TMMOByXQVuxpbqCFAi3f9PeOHAvGuuIILGmH6bXimmh1k
+    XdMqoGQte8y5hMUsXjHV5n4B7da63zU71uNX9Ywo9PKSRuipK53WZVwT6TpaMIi1
+    GPH3LBaAzhqvPN+tR6tVN9q45YD4vWVNiQe46I2BTyJDYRDFD31upkPZ
+    -----END RSA PRIVATE KEY-----
+  publicKey: |
+    -----BEGIN PUBLIC KEY-----
+    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7vTAGI8rqv/Qos2pgx0h
+    RfZ+kv8h60KSUOtCbGQ3iTIYgLDxLWlPJNtd9vlbTkP/FgKomeYOM3AQk/SnCjXM
+    DUOmoKT9RflrFq8bSf04VhQ0ns/ffuwFFr95FZuaE7rmXWtblakyJzFaOXtGwI/Z
+    64xQxwLrZIi8crjL3qNLYy64UX7Lyauwys9aDcaFpH6fCKIBeT4MuVioOHrK1nFv
+    T8detlcBS6NsnmXl0XrUWmkFJ3uWkRmqZlRuMYZgw27qMqZ8Og6qdMVLJoKKyLIO
+    32ZZF3mI7ECt6Kxg+x3YpcMLXCkQ1oNSJWTs8IN7D2cnV44DEnpFHIVpawaL7F5Y
+    XwIDAQAB
+    -----END PUBLIC KEY-----
 

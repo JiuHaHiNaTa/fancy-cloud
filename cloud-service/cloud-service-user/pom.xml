@@ -15,7 +15,11 @@
     </parent>
 
     <dependencies>
-
+        <dependency>
+            <groupId>com.egao</groupId>
+            <artifactId>cloud-service-api-auth</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>

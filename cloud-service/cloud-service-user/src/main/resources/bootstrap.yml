@@ -9,13 +9,25 @@ spring:
     config:
       label: master
       uri: http://localhost:8888
-      enabled:   true
+      enabled: true
       name: cloud-service-user
+      # 表示使用服务发现组件中的ConfigServer,而不指定自己的ConfigServer
+      profile: dev
+    #      discovery:
+#        enabled: true
+    loadbalancer:
+      ribbon:
+        enabled: false
 
 # 应用服务 WEB 访问端口
 server:
   port: 8090
+  servlet:
+    session:
+      cookie:
+        name: cloud-service-user
 
+#配置注册中心相关配置
 eureka:
   instance:
     prefer-ip-address: true
@@ -24,3 +36,9 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

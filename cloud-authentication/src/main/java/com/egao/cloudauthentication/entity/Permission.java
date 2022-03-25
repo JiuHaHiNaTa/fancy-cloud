@@ -30,22 +30,17 @@ public class Permission extends BaseEntity {
     private String name;
 
     /**
-     * 权限值
+     * 权限值（SpringSecurity getAuthority值）
      */
     private String value;
 
     /**
      * 权限类型
      */
-    private Integer type;
+    private String type;
 
     /**
      * 权限状态
      */
     private Integer status;
-
-    /**
-     * 排序字段
-     */
-    private Integer sort;
 }

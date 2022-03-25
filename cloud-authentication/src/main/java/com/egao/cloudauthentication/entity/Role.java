@@ -18,10 +18,14 @@ import javax.persistence.Table;
 @Table(name = "t_role")
 public class Role extends BaseEntity {
 
+    /**
+     * 角色名
+     */
     private String name;
 
+    /**
+     * 角色描述
+     */
     private String description;
-
-    private Integer sort;
 
 }

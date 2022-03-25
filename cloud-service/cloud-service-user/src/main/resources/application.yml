@@ -1,23 +1,65 @@
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
+oauth2-service-url: http://127.0.0.1:8901
 
 security:
   oauth2:
-    sso:
-      login-path: /login
     client:
       client-id: fancycloud
       client-secret: 123456
-      access-token-uri: http://127.0.0.1:8901/login/oauth/access_token
-      user-authorization-uri: http://127.0.0.1:8901/login/oauth/authorize
-      client-authentication-scheme: form
+      access-token-uri: ${oauth2-service-url}/oauth/token
+      user-authorization-uri: ${oauth2-service-url}/oauth/authorize
     resource:
-      user-info-uri: http://127.0.0.1:8901/user
-      token-info-uri: http://127.0.0.1:8901/oauth2/check_token
+#    配置后会启用默认配置JWTAccessToken等
+      jwt:
+        key-uri: ${oauth2-service-url}/oauth/token_key
+#        key-value: dev
+      user-info-uri: ${oauth2-service-url}/user
+      token-info-uri: ${oauth2-service-url}/oauth/check_token
 
-info:
-  app.name: cloud-service-user
-  company.name: egao
+#JDBC
+spring:
+  datasource:
+    #数据库驱动
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    name: defaultDataSource
+    #url
+    url: jdbc:mysql://192.168.12.140:3306/fancy-cloud-test?serverTimezone=UTC
+    #数据库用户名
+    username: root
+    #数据库密码
+    password: 123456
+    jpa:
+      hibernate:
+        ddl-auto: update
+      show-sql: true
+      open-in-view: false
+  kafka:
+    bootstrap-servers:
+      - 192.168.12.140:9092
+  cloud:
+    bus:
+      refresh:
+        enabled: true
+      id: ${spring.application.name}:${spring.cloud.config.profile}:${random.value}
+
+feign:
+  client:
+    config:
+      defualt:
+        connectTimeout: 10000
+        readTimeout: 12000
+
+
+
+
+# jwt密钥对，公钥
+jwt:
+  publicKey: |
+    -----BEGIN PUBLIC KEY-----
+    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7vTAGI8rqv/Qos2pgx0h
+    RfZ+kv8h60KSUOtCbGQ3iTIYgLDxLWlPJNtd9vlbTkP/FgKomeYOM3AQk/SnCjXM
+    DUOmoKT9RflrFq8bSf04VhQ0ns/ffuwFFr95FZuaE7rmXWtblakyJzFaOXtGwI/Z
+    64xQxwLrZIi8crjL3qNLYy64UX7Lyauwys9aDcaFpH6fCKIBeT4MuVioOHrK1nFv
+    T8detlcBS6NsnmXl0XrUWmkFJ3uWkRmqZlRuMYZgw27qMqZ8Og6qdMVLJoKKyLIO
+    32ZZF3mI7ECt6Kxg+x3YpcMLXCkQ1oNSJWTs8IN7D2cnV44DEnpFHIVpawaL7F5Y
+    XwIDAQAB
+    -----END PUBLIC KEY-----
